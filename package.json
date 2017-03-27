@@ -1,0 +1,23 @@
+{
+  "name": "express-lane",
+  "version": "1.0.0",
+  "description": "Playing with Express",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexanderfrankel/express-lane.git"
+  },
+  "author": "Alexander Frankel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexanderfrankel/express-lane/issues"
+  },
+  "homepage": "https://github.com/alexanderfrankel/express-lane#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
