@@ -3,6 +3,8 @@ var app = express();
 
 var fs = require('fs');
 var _ = require('lodash');
+var engines = require('consolidate');
+
 var users = [];
 
 fs.readFile('users.json', {encoding: 'utf8'}, function(err, data){
@@ -14,12 +16,13 @@ fs.readFile('users.json', {encoding: 'utf8'}, function(err, data){
   });
 });
 
+app.engine('hbs', engines.handlebars);
+
+app.set('views', './views');
+app.set('view engine', 'hbs');
+
 app.get('/', function(request, response){
-  var buffer = '';
-  users.forEach(function(user){
-    buffer += '<a href="/' + user.username + '">' + user.name.full + '<br>';
-  });
-  response.send(buffer);
+  response.render('index', {users: users});
 });
 
 app.get(/big.*/, function(request, response, next){
