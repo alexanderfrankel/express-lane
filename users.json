@@ -1,0 +1,8 @@
+[
+  { "username": "alfrankel",
+    "name": { "first": "Alex",
+              "last": "Frankel" } },
+  { "username": "maggiedeutsch",
+    "name": { "first": "Maggie",
+              "last": "Deutsch" } }
+]

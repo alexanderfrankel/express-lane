@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/alexanderfrankel/express-lane#readme",
   "dependencies": {
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "fs": "0.0.1-security",
+    "lodash": "^4.17.4"
   }
 }
