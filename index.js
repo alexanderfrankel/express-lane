@@ -1,12 +1,35 @@
 var express = require('express');
 var app = express();
 
-app.get('/', function(request, response){
-  response.send('Hello World!');
+var fs = require('fs');
+var _ = require('lodash');
+var users = [];
+
+fs.readFile('users.json', {encoding: 'utf8'}, function(err, data){
+  if (err) throw err;
+
+  JSON.parse(data).forEach(function(user){
+    user.name.full = _.startCase(user.name.first + ' ' +  user.name.last);
+    users.push(user);
+  });
 });
 
-app.get('/yo', function(request, response){
-  response.send('YO!');
+app.get('/', function(request, response){
+  var buffer = '';
+  users.forEach(function(user){
+    buffer += '<a href="/' + user.username + '">' + user.name.full + '<br>';
+  });
+  response.send(buffer);
+});
+
+app.get(/big.*/, function(request, response, next){
+  console.log('BIG USER ACCESS');
+  next();
+});
+
+app.get('/:username', function(request, response){
+  var username = request.params.username;
+  response.send(username);
 });
 
 var server = app.listen(3000, function(){
